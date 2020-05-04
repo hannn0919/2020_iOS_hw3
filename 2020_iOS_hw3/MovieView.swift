@@ -23,8 +23,6 @@ struct MovieView: View {
                 Text("早安午安晚安，\(name)😊\n推薦您這部片🍿️")
                     .font(.system(size: 23))
                 detailView(type: self.type, year: self.year, score: self.score)
-                
-                
             }
         }
     }
@@ -41,283 +39,28 @@ struct detailView: View {
         
         return VStack{
             if type == 0 {
-                Image(romanticMovies[pick].img)
-                    .resizable()
-                    .scaledToFit()
-                    .padding()
-                    .frame(width:300, height:400)
                 
-                Text(romanticMovies[pick].name)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding()
-                    .foregroundColor(.black)
-                    .background(Color.white)
-                    .cornerRadius(40)
-                
-                Spacer()
-                
-                Text("上映年份：\(romanticMovies[pick].year)")
-                    .font(.system(size: 15))
-                
-                
-                Spacer()
-                
-                Text("IMDb得分：" + String(format: "%.1f", romanticMovies[pick].score))
-                    .font(.system(size: 20))
-                    .foregroundColor(.red)
-                
-                
-                Spacer()
-                
-                Text(romanticMovies[pick].description)
-                
-                Spacer()
-                
-                Button("Netflix看片去🏃"){
-                    if let url = URL(string: romanticMovies[pick].link) {
-                        if UIApplication.shared.canOpenURL(url) {
-                            UIApplication.shared.open(url, options: [:])
-                        }
-                    }
-                }
-                .frame(width:180,height:20)
-                .padding()
-                .font(.system(size: 20))
-                .background(Color(red:61/255, green:61/255, blue:61/255))
-                .cornerRadius(15)
-                .foregroundColor(.red)
-                .padding(5)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 15)
-                        .stroke(Color(red:61/255, green:61/255, blue:61/255), lineWidth: 3))
-                
-                
-                
+                information(pick: pick, type: 0)
                 
             }
             else if type == 1 {
-                Image(horrorMovies[pick].img)
-                    .resizable()
-                    .scaledToFit()
-                    .padding()
-                    .frame(width:300, height:400)
                 
-                Text(horrorMovies[pick].name)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding()
-                    .foregroundColor(.black)
-                    .background(Color.white)
-                    .cornerRadius(40)
-                
-                Spacer()
-                
-                Text("上映年份：\(horrorMovies[pick].year)")
-                    .font(.system(size: 15))
-                
-                
-                Spacer()
-                
-                Text("IMDb得分：" + String(format: "%.1f", horrorMovies[pick].score))
-                    .font(.system(size: 20))
-                    .foregroundColor(.red)
-                
-                
-                Spacer()
-                
-                Text(horrorMovies[pick].description)
-                
-                Spacer()
-                
-                Button("Netflix看片去🏃"){
-                    if let url = URL(string: horrorMovies[pick].link) {
-                        if UIApplication.shared.canOpenURL(url) {
-                            UIApplication.shared.open(url, options: [:])
-                        }
-                    }
-                }
-                .frame(width:180,height:20)
-                .padding()
-                .font(.system(size: 20))
-                .background(Color(red:61/255, green:61/255, blue:61/255))
-                .cornerRadius(15)
-                .foregroundColor(.red)
-                .padding(5)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 15)
-                        .stroke(Color(red:61/255, green:61/255, blue:61/255), lineWidth: 3))
-                
-                
-                
+                information(pick: pick, type: 1)
                 
             }
             else if type == 2 {
-                Image(actionMovies[pick].img)
-                    .resizable()
-                    .scaledToFit()
-                    .padding()
-                    .frame(width:300, height:400)
                 
-                Text(actionMovies[pick].name)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding()
-                    .foregroundColor(.black)
-                    .background(Color.white)
-                    .cornerRadius(40)
-                
-                Spacer()
-                
-                Text("上映年份：\(actionMovies[pick].year)")
-                    .font(.system(size: 15))
-                
-                
-                Spacer()
-                
-                Text("IMDb得分：" + String(format: "%.1f", actionMovies[pick].score))
-                    .font(.system(size: 20))
-                    .foregroundColor(.red)
-                
-                
-                Spacer()
-                
-                Text(actionMovies[pick].description)
-                
-                Spacer()
-                
-                Button("Netflix看片去🏃"){
-                    if let url = URL(string: actionMovies[pick].link) {
-                        if UIApplication.shared.canOpenURL(url) {
-                            UIApplication.shared.open(url, options: [:])
-                        }
-                    }
-                }
-                .frame(width:180,height:20)
-                .padding()
-                .font(.system(size: 20))
-                .background(Color(red:61/255, green:61/255, blue:61/255))
-                .cornerRadius(15)
-                .foregroundColor(.red)
-                .padding(5)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 15)
-                        .stroke(Color(red:61/255, green:61/255, blue:61/255), lineWidth: 3))
-                
-                
-                
+                information(pick: pick, type: 2)
                 
             }
             else if type == 3 {
-                Image(comedyMovies[pick].img)
-                    .resizable()
-                    .scaledToFit()
-                    .padding()
-                    .frame(width:300, height:400)
                 
-                Text(comedyMovies[pick].name)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding()
-                    .foregroundColor(.black)
-                    .background(Color.white)
-                    .cornerRadius(40)
-                
-                Spacer()
-                
-                Text("上映年份：\(comedyMovies[pick].year)")
-                    .font(.system(size: 15))
-                
-                
-                Spacer()
-                
-                Text("IMDb得分：" + String(format: "%.1f", comedyMovies[pick].score))
-                    .font(.system(size: 20))
-                    .foregroundColor(.red)
-                
-                
-                Spacer()
-                
-                Text(comedyMovies[pick].description)
-                
-                Spacer()
-                
-                Button("Netflix看片去🏃"){
-                    if let url = URL(string: comedyMovies[pick].link) {
-                        if UIApplication.shared.canOpenURL(url) {
-                            UIApplication.shared.open(url, options: [:])
-                        }
-                    }
-                }
-                .frame(width:180,height:20)
-                .padding()
-                .font(.system(size: 20))
-                .background(Color(red:61/255, green:61/255, blue:61/255))
-                .cornerRadius(15)
-                .foregroundColor(.red)
-                .padding(5)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 15)
-                        .stroke(Color(red:61/255, green:61/255, blue:61/255), lineWidth: 3))
-                
-                
-                
+                information(pick: pick, type: 3)
                 
             }
             else if type == 4 {
-                Image(animationMovies[pick].img)
-                    .resizable()
-                    .scaledToFit()
-                    .padding()
-                    .frame(width:300, height:400)
                 
-                Text(animationMovies[pick].name)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding()
-                    .foregroundColor(.black)
-                    .background(Color.white)
-                    .cornerRadius(40)
-                
-                Spacer()
-                
-                Text("上映年份：\(animationMovies[pick].year)")
-                    .font(.system(size: 15))
-                
-                
-                Spacer()
-                
-                Text("IMDb得分：" + String(format: "%.1f", animationMovies[pick].score))
-                    .font(.system(size: 20))
-                    .foregroundColor(.red)
-                
-                
-                Spacer()
-                
-                Text(animationMovies[pick].description)
-                
-                Spacer()
-                
-                Button("Netflix看片去🏃"){
-                    if let url = URL(string: animationMovies[pick].link) {
-                        if UIApplication.shared.canOpenURL(url) {
-                            UIApplication.shared.open(url, options: [:])
-                        }
-                    }
-                }
-                .frame(width:180,height:20)
-                .padding()
-                .font(.system(size: 20))
-                .background(Color(red:61/255, green:61/255, blue:61/255))
-                .cornerRadius(15)
-                .foregroundColor(.red)
-                .padding(5)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 15)
-                        .stroke(Color(red:61/255, green:61/255, blue:61/255), lineWidth: 3))
-                
-                
-                
+                information(pick: pick, type: 4)
                 
             }
             
@@ -327,12 +70,10 @@ struct detailView: View {
     }
     
     func choose(type: Int, year: Int, score: Double)->Int{
-        print(type, year, score)
         var randNum: Range<Int> = 0 ..< 1
         var pickindex = 0
         
         if type == 0{
-            print(romanticMovies.count)
             for i in 0 ..< romanticMovies.count {
                 if romanticMovies[i].year >= year && romanticMovies[i].score >= score {
                     return i
@@ -377,3 +118,90 @@ struct detailView: View {
     }
 }
 
+struct information: View{
+    let pick: Int
+    let type: Int
+    let classfication = [romanticMovies, horrorMovies, actionMovies, comedyMovies, animationMovies]
+    @State private var showImg = true
+    
+    var body: some View {
+        VStack{
+            
+            if(showImg) {
+                Image(classfication[type][pick].img)
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
+                    .frame(width:300, height:400)
+                    .transition(.opacity)
+                    .contextMenu {
+                        Button(action: {
+                            self.showImg = false
+                        }) {
+                            Text("我不想看到圖片")
+                            Image(systemName: "eye.slash")
+                        }
+                        Button(action: {}) {
+                            Text("沒事按好玩的")
+                            Image(systemName: "flame")
+                        }
+                }
+                .animation(.easeInOut(duration:3))
+                .onAppear {
+                    self.showImg = true
+                    
+                }
+                .onDisappear {
+                    self.showImg = false
+                }
+            }
+            
+            
+            Text(classfication[type][pick].name)
+                .font(.title)
+                .fontWeight(.bold)
+                .padding()
+                .foregroundColor(.black)
+                .background(Color.white)
+                .cornerRadius(40)
+            
+            
+            Spacer()
+            
+            Text("上映年份：\(classfication[type][pick].year)")
+                .font(.system(size: 15))
+            
+            
+            Spacer()
+            
+            Text("IMDb得分：" + String(format: "%.1f", classfication[type][pick].score))
+                .font(.system(size: 20))
+                .foregroundColor(.red)
+            
+            
+            Spacer()
+            
+            Text(classfication[type][pick].description)
+            
+            Spacer()
+            
+            Button("Netflix看片去🏃"){
+                if let url = URL(string: self.classfication[self.type][self.pick].link) {
+                    if UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url, options: [:])
+                    }
+                }
+            }
+            .frame(width:180,height:20)
+            .padding()
+            .font(.system(size: 20))
+            .background(Color(red:61/255, green:61/255, blue:61/255))
+            .cornerRadius(15)
+            .foregroundColor(.red)
+            .padding(5)
+            .overlay(
+                RoundedRectangle(cornerRadius: 15)
+                    .stroke(Color(red:61/255, green:61/255, blue:61/255), lineWidth: 3))
+        }
+    }
+}

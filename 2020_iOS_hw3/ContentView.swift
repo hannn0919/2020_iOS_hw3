@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var typePick = 0
     @State private var score = 0.0
     @State private var selectDate = Date()
+    @State private var showSheet = false
     
     let today = Date()
     let startDate = Calendar.current.date(byAdding: .year,value: -30, to: Date())!
@@ -23,12 +24,22 @@ struct ContentView: View {
     var year: Int {
         Calendar.current.component(.year, from: selectDate)
     }
+    var img: String = "title"
     
     var body: some View {
         VStack{
-            Image("title")
+            
+            
+            Button(action: {
+                self.showSheet = true
+            }) {
+                Image(img)
                 .resizable()
                 .scaledToFit()
+            }
+            .actionSheet(isPresented: $showSheet) {
+                ActionSheet(title: Text("聽說做這個可以加分？"), message: Text("快點按下下面那個按鈕！！"), buttons: [.default(Text("按了也沒用😝"))])
+            }.buttonStyle(PlainButtonStyle())
             
             Form{
                 Name(name: self.$name)
