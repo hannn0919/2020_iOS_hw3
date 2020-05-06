@@ -69,7 +69,7 @@ struct detailView: View {
         .background(Color(red:91/255, green:179/255, blue:199/255))
     }
     
-    func choose(type: Int, year: Int, score: Double)->Int{
+    func choose(type: Int, year: Int, score: Double) -> Int{
         var randNum: Range<Int> = 0 ..< 1
         var pickindex = 0
         
@@ -146,7 +146,6 @@ struct information: View{
                             Image(systemName: "flame")
                         }
                 }
-                .animation(.easeInOut(duration:3))
                 .onAppear {
                     self.showImg = true
                     
@@ -203,5 +202,6 @@ struct information: View{
                 RoundedRectangle(cornerRadius: 15)
                     .stroke(Color(red:61/255, green:61/255, blue:61/255), lineWidth: 3))
         }
+        .animation(.easeInOut(duration:1.5))
     }
 }
